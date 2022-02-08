@@ -38,12 +38,15 @@ var operator = document.getElementsByClassName("operator");
 //     setHistory_onscreen("");
 // });
 
-
+var resett = 0;
 
 for (let i=0;i<operator.length;i++){
     operator[i].addEventListener("click", function(){
 
         if(this.id=="+" || this.id=="-"||this.id=="*"||this.id=="/"||this.id=="="||this.id=="%"){
+            if(this.key == "="){
+                resett = 1;
+             }
             var output = getValue_fromscreen();
             var history = getHistory_fromscreen();
             if(output !=""){
@@ -112,9 +115,21 @@ var number = document.getElementsByClassName("number");
 for( let i=0;i<number.length;i++){
     number[i].addEventListener("click",function(){
         if(this.id != NaN){
-        var value = getValue_fromscreen()
-        value = value + this.id;
-        setValue_onscreen(value);
+        // var value = getValue_fromscreen()
+        // value = value + this.id;
+        // setValue_onscreen(value);
+
+        if(resett == 0){
+            var value = getValue_fromscreen()
+            value = value + this.id;
+            setValue_onscreen(value);
+        }
+        else{
+            // var p = getValue_fromscreen();
+            // p = p.substring(0,p.length-1);
+            setValue_onscreen(this.id);
+            resett = 0;
+        }
         }
     });
 
