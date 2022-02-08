@@ -38,6 +38,8 @@ var operator = document.getElementsByClassName("operator");
 //     setHistory_onscreen("");
 // });
 
+
+
 for (let i=0;i<operator.length;i++){
     operator[i].addEventListener("click", function(){
 
@@ -124,17 +126,27 @@ for( let i=0;i<number.length;i++){
 
 ////////////////////// Key Board Code/////////////////////////////
 
+var reset = 0;
 
 document.addEventListener('keydown', logKey)
 function logKey(e)
 {
      var noo = e.key;
-    //  console.log(noo)
+     console.log(reset);
 
 if(e.key == "0" ||e.key == "1" ||e.key == "2" ||e.key == "3" ||e.key == "4" ||e.key == "5" ||e.key == "6" ||e.key == "7" ||e.key == "8" ||e.key == "9"){
-    var value = getValue_fromscreen()
-    value = value + e.key;
-    setValue_onscreen(value);
+    if(reset == 0){
+        var value = getValue_fromscreen()
+        value = value + e.key;
+        setValue_onscreen(value);
+    }
+    else{
+        // var p = getValue_fromscreen();
+        // p = p.substring(0,p.length-1);
+        setValue_onscreen(e.key);
+        reset = 0;
+    }
+    
 }
 
 
@@ -152,6 +164,7 @@ else if(e.keyCode == 190){
     var value = getValue_fromscreen()
     value = value + e.key;
     setValue_onscreen(value);
+    
   }
 
 
@@ -162,6 +175,9 @@ else if(e.keyCode == 190){
   //////////////// operations/////////////
 
  else if(e.key=="+" || e.key=="-"||e.key=="*"||e.key=="/"||e.key=="="||e.key=="%"){
+     if(e.key == "="){
+        reset = 1;
+     }
     var output = getValue_fromscreen();
     var history = getHistory_fromscreen();
     // if(output !=""){
