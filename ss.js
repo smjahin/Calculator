@@ -15,6 +15,14 @@ function setValue_onscreen(num){
     document.getElementById('output-value').innerHTML = num;
 }
 
+function getHelper(){
+    return document.getElementById("helper-value").innerHTML;
+}
+
+function setHelper(num){
+    document.getElementById('helper-value').innerHTML = num;
+}
+
 //setValue_onscreen("100");
 
 
@@ -40,11 +48,36 @@ var operator = document.getElementsByClassName("operator");
 
 var resett = 0;
 
+var number = document.getElementsByClassName("number");
+
+for( let i=0;i<number.length;i++){
+    number[i].addEventListener("click",function(){
+        if(this.id != NaN){
+        // var value = getValue_fromscreen()
+        // value = value + this.id;
+        // setValue_onscreen(value);
+        if(resett == 0){
+            var value = getValue_fromscreen()
+            value = value + this.id;
+            setValue_onscreen(value);
+        }
+        else{
+            // var p = getValue_fromscreen();
+            // p = p.substring(0,p.length-1);
+            setValue_onscreen(this.id);
+            resett = 0;
+            }
+        }
+    });
+
+}
+
+
 for (let i=0;i<operator.length;i++){
     operator[i].addEventListener("click", function(){
 
         if(this.id=="+" || this.id=="-"||this.id=="*"||this.id=="/"||this.id=="="||this.id=="%"){
-            if(this.key == "="){
+            if(this.id == "="){
                 resett = 1;
              }
             var output = getValue_fromscreen();
@@ -55,19 +88,22 @@ for (let i=0;i<operator.length;i++){
                     var r = getHistory_fromscreen()+getValue_fromscreen();
                     var result = eval(r);
                     setHistory_onscreen("");
+                    setHelper(result);
                     setValue_onscreen(result);
 
                 }
                 else{
                     var m = history.split(this.id).length - 1;
-                    // console.log(m);
+                    
                     if (m>=1){
                     var r = getHistory_fromscreen()+getValue_fromscreen();
                     var result = eval(r);
                     setHistory_onscreen(result+this.id);
+                    setHelper(result);
                     setValue_onscreen("");
                     }
                     else{
+                    setHelper(history);
                     history = history + this.id;
                     setHistory_onscreen(history);
                     setValue_onscreen("");
@@ -110,30 +146,6 @@ for (let i=0;i<operator.length;i++){
 }
 
 
-var number = document.getElementsByClassName("number");
-
-for( let i=0;i<number.length;i++){
-    number[i].addEventListener("click",function(){
-        if(this.id != NaN){
-        // var value = getValue_fromscreen()
-        // value = value + this.id;
-        // setValue_onscreen(value);
-
-        if(resett == 0){
-            var value = getValue_fromscreen()
-            value = value + this.id;
-            setValue_onscreen(value);
-        }
-        else{
-            // var p = getValue_fromscreen();
-            // p = p.substring(0,p.length-1);
-            setValue_onscreen(this.id);
-            resett = 0;
-        }
-        }
-    });
-
-}
 
 
 
@@ -142,12 +154,13 @@ for( let i=0;i<number.length;i++){
 ////////////////////// Key Board Code/////////////////////////////
 
 var reset = 0;
+var toggo = 0;
 
 document.addEventListener('keydown', logKey)
 function logKey(e)
 {
      var noo = e.key;
-     console.log(reset);
+     
 
 if(e.key == "0" ||e.key == "1" ||e.key == "2" ||e.key == "3" ||e.key == "4" ||e.key == "5" ||e.key == "6" ||e.key == "7" ||e.key == "8" ||e.key == "9"){
     if(reset == 0){
@@ -161,6 +174,7 @@ if(e.key == "0" ||e.key == "1" ||e.key == "2" ||e.key == "3" ||e.key == "4" ||e.
         setValue_onscreen(e.key);
         reset = 0;
     }
+    toggo = 0;
     
 }
 
@@ -193,6 +207,7 @@ else if(e.keyCode == 190){
      if(e.key == "="){
         reset = 1;
      }
+    toggo = 1;
     var output = getValue_fromscreen();
     var history = getHistory_fromscreen();
     // if(output !=""){
@@ -209,7 +224,7 @@ else if(e.keyCode == 190){
             //     setValue_onscreen("Undefined")
             // }
             setValue_onscreen(result);
-            
+            setHelper(result);
 
         }
         else{
@@ -217,16 +232,26 @@ else if(e.keyCode == 190){
             if (m>=1){
             var r = getHistory_fromscreen()+getValue_fromscreen();
             var result = eval(r);
-            result = result+e.key;
-            // console.log(getter_operator());
+            setHelper(result);
+            result = result+e.key;      
             setHistory_onscreen(result);
+            
+
+
+            // var r = getHistory_fromscreen()+getValue_fromscreen();
+            // var result = eval(r);
+            // setHistory_onscreen(result+this.id);
+            // setHelper(result);
+            // setValue_onscreen("");
+
+
+
             // setter_operator(getHistory_fromscreen());
             var mm = getHistory_fromscreen();
             var kk = getHistory_fromscreen();
             kk = kk.substring(0,kk.length - 1);
             mm = mm.substring(mm.length - 1);
-            // console.log(kk);
-            // console.log(e.key);
+            
             
             // setHistory_onscreen(kk + e.key);
             // console(kk+e.key)
@@ -240,17 +265,20 @@ else if(e.keyCode == 190){
             // var ui = getHistory_fromscreen();
             // ui = ui.substring(0,ui.length()-1)
             // setValue_onscreen(getHistory_fromscreen());
+            
+            
             setValue_onscreen("");
+            
             }
             else{
-
+            setHelper(history);
             history = history + e.key;
             var mm = getHistory_fromscreen();
             var kk = getHistory_fromscreen();
             kk = kk.substring(0,kk.length - 1);
             // var kk = history.substring(0,history.length - 1);
             // var mm = history.substring(history.length - 1);
-            console.log(kk + e.key);
+            
             if( e.key=="+" || e.key=="-"||e.key=="*"||e.key=="/"||e.key=="="||e.key=="%") {
                 // setHistory_onscreen(kk + e.key);
                 setHistory_onscreen(history);
@@ -288,11 +316,6 @@ else if(e.keyCode == 46){
 ////////////////other/////////////////////
 
 }
-
-// function setter_operator(num){
-//     var k = num[num.length-1];
-//     console.log(k);
-//  }
 
 
 
