@@ -29,12 +29,13 @@ body{
 }
 
 #history{
-    text-align: right;
+    /* text-align: right;
     height: 20px;
     margin: 0 20px;
     padding-top: 20px;
     font-size: 15px;
-    color: #e78f8f;
+    color: #e78f8f; */
+    font-size: 2px;
 }
 #output{
     text-align: right;
@@ -112,4 +113,14 @@ button:nth-child(24){
 
 .new{
     font-size: 30px;
+}
+
+
+#helper{
+    text-align: right;
+    height: 20px;
+    margin: 0 20px;
+    padding-top: 20px;
+    font-size: 15px;
+    color: #e78f8f;
 }
