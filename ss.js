@@ -78,7 +78,7 @@ for( let i=0;i<number.length;i++){
 for (let i=0;i<operator.length;i++){
     operator[i].addEventListener("click", function(){
 
-        if(this.id=="+" || this.id=="-"||this.id=="*"||this.id=="/"||this.id=="="||this.id=="%"){
+        if(this.id=="+" || this.id=="-"||this.id=="*"||this.id=="/"||this.id=="="){
             if(this.id == "="){
                 resett = 1;
              }
@@ -142,6 +142,36 @@ for (let i=0;i<operator.length;i++){
         out = parseInt(out);
         var result = (1/out);
         setValue_onscreen(result);
+    }
+
+    else if(this.id == "%"){
+        
+        var omm = getHistory_fromscreen();
+        var opp = getValue_fromscreen();
+        var op = getHistory_fromscreen() + getValue_fromscreen();
+        console.log(op);
+        var coun = 0;
+        for (x of op){
+            if(x == "*"){
+                break;
+            }
+            coun = coun + 1;  
+        }
+        
+        var ttt = op.substring(op.length - coun+1, op.length);
+        console.log(ttt);
+        var kk =  parseInt(ttt);
+        var mm = kk/100;
+        var yy = mm.toString();
+        op = op.substring(0,coun) +"*"+ yy;
+        console.log(eval(op));
+        setHistory_onscreen(eval(op));
+        setHelper(eval(op));
+        setValue_onscreen("");
+        setHistory_onscreen("");
+        
+        
+        
     }
 
     });
@@ -237,12 +267,14 @@ else if(e.keyCode == 190){
             var r = getHistory_fromscreen()+getValue_fromscreen();
             var result = eval(r);
             var sav    = ""
-            // for (let x of result){
-            //     if(x != "+" || x != "-" ||x != "*" ||x != "/"){
-            //         sav = sav + x;
-            //     }
-            // }
-            setHelper(result);
+            for (let x of result.toString()){
+                
+                if(x != "+" || x != "-" ||x != "*" ||x != "/"){
+                    sav = sav + x;
+                    console.log(x);
+                }
+            }
+            setHelper(sav);
             result = result+e.key;      
             setHistory_onscreen(result);
             
@@ -289,7 +321,7 @@ else if(e.keyCode == 190){
             // var kk = history.substring(0,history.length - 1);
             // var mm = history.substring(history.length - 1);
             
-            if( e.key=="+" || e.key=="-"||e.key=="*"||e.key=="/"||e.key=="="||e.key=="%") {
+            if( e.key=="+" || e.key=="-"||e.key=="*"||e.key=="/"||e.key=="=") {
                 // setHistory_onscreen(kk + e.key);
                 setHistory_onscreen(history);
             }  
@@ -321,6 +353,8 @@ else if(e.keyCode == 46){
     setHistory_onscreen("");
     setValue_onscreen("");
 }
+
+
 
 
 ////////////////other/////////////////////
