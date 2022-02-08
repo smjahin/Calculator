@@ -1,0 +1,115 @@
+body{
+	font-family: 'Open Sans',sans-serif;
+	background-color: #e0e0e0;
+    
+}
+#container{
+    margin-top: 125px;
+}
+
+#calculator{
+	width: 328px;
+    height: 431px;
+	background: #e0e0e0;
+    box-shadow:  -20px 20px 60px #bebebe,
+    20px -20px 60px #ffffff;
+    
+    margin: 0 auto;
+    padding: 3px;
+    top: 20px;
+    position: relative;
+    background: rgba( 255, 255, 255, 0.1 );
+
+    
+}
+
+#result{
+    height: 120px;
+    box-shadow: inset -20px 20px 43px #d0d0d0, inset 20px -20px 43px #e3e1e1;
+}
+
+#history{
+    text-align: right;
+    height: 20px;
+    margin: 0 20px;
+    padding-top: 20px;
+    font-size: 15px;
+    color: #e78f8f;
+}
+#output{
+    text-align: right;
+    height: 60px;
+    margin: 10px 20px;
+    font-size: 30px;
+}
+
+#keyboard{
+    height: 400px;
+}
+
+
+.operator{
+    font-size: 18px;
+    font-weight: 100;
+    width: 80px;
+    height: 50px;
+    margin: 0px;
+    padding: 0;
+    border: none;
+    float: left;
+    font-family: Segoe UI;
+    color: rgb(12, 11, 11);
+    background-color: #c7c6c6;
+    box-shadow: -20px 20px 43px #a9a9a9, -2px 3px 20px 0px #bfbbbb;
+}
+.number{
+    font-size: 22px;
+    font-weight: 600; 
+    width: 80px;
+    height: 50px;
+    margin: 0px;
+    padding: 0;
+    border: none;
+    float: left;
+    font-family: Segoe UI;
+    background: #e0e0e0;
+    box-shadow: -20px 20px 43px #a9a9a9, 6px -6px 20px 0px #b3b0b0;
+    
+}
+
+.number, .empty{
+    background-color: #f0f0f0fa;
+}
+
+.number, .operator{
+    cursor: pointer;
+    margin: 1px;
+}
+
+.number:hover {
+    background: #a0a0a0;
+}
+
+.number:active {
+    background: #555353;
+}
+
+.operator:hover {
+    background: #a0a0a0;
+}
+
+.operator:active {
+    background: #555353;
+}
+
+
+
+button:nth-child(24){
+    font-size: 20px;
+    background-color: #ecc393;
+}
+
+
+.new{
+    font-size: 30px;
+}
