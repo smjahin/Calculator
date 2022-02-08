@@ -143,6 +143,11 @@ for (let i=0;i<operator.length;i++){
         var result = (1/out);
         setValue_onscreen(result);
     }
+    else if(this.id == "plusminus"){
+        
+        var e = getValue_fromscreen();
+        setValue_onscreen("-"+e);
+    }
 
     else if(this.id == "%"){
         
