@@ -236,6 +236,12 @@ else if(e.keyCode == 190){
             if (m>=1){
             var r = getHistory_fromscreen()+getValue_fromscreen();
             var result = eval(r);
+            var sav    = ""
+            // for (let x of result){
+            //     if(x != "+" || x != "-" ||x != "*" ||x != "/"){
+            //         sav = sav + x;
+            //     }
+            // }
             setHelper(result);
             result = result+e.key;      
             setHistory_onscreen(result);
