@@ -58,7 +58,9 @@ for( let i=0;i<number.length;i++){
         // setValue_onscreen(value);
         if(resett == 0){
             var value = getValue_fromscreen()
-            value = value + this.id;
+            if(value.length < 17){
+                value = value + this.id;
+             }
             setValue_onscreen(value);
         }
         else{
@@ -165,7 +167,9 @@ function logKey(e)
 if(e.key == "0" ||e.key == "1" ||e.key == "2" ||e.key == "3" ||e.key == "4" ||e.key == "5" ||e.key == "6" ||e.key == "7" ||e.key == "8" ||e.key == "9"){
     if(reset == 0){
         var value = getValue_fromscreen()
+        if(value.length < 17){
         value = value + e.key;
+         }
         setValue_onscreen(value);
     }
     else{
