@@ -357,17 +357,46 @@ else if(e.keyCode == 8){
 else if(e.keyCode == 46){
     setHistory_onscreen("");
     setValue_onscreen("");
+    setHelper("");
 }
 
+else if( e.keyCode == 53 ){
+    if(e.shiftKey){
+      alert("hello");
 
+   }
+}
+
+var charCode = (e.which) ? e.which : e.keyCode;
+    var mFive = String.fromCharCode(e.which); 
+    if ((charCode == 53) && (mFive === "5")){
+        var omm = getHistory_fromscreen();
+        var opp = getValue_fromscreen();
+        var op = getHistory_fromscreen() + getValue_fromscreen();
+        console.log(op);
+        var coun = 0;
+        for (x of op){
+            if(x == "*"){
+                break;
+            }
+            coun = coun + 1;  
+        }
+        console.log("Length:", op.length);
+        console.log("Coun", coun);
+        var ttt = op.substring(coun+1);
+        console.log(ttt);
+        var kk =  parseInt(ttt);
+        var mm = kk/100;
+        var yy = mm.toString();
+        op = op.substring(0,coun) +"*"+ yy;
+        console.log(eval(op));
+        setHistory_onscreen(eval(op));
+        setHelper(eval(op));
+        setValue_onscreen("");
+        setHistory_onscreen("");
+}
 
 
 ////////////////other/////////////////////
-
 }
-
-
-
-
-
 
