@@ -123,6 +123,7 @@ for (let i=0;i<operator.length;i++){
     }
     else if(this.id == "clear"){
         setHistory_onscreen("");
+        setHelper("");
         setValue_onscreen("");
     }
     else if(this.id == "√"){
@@ -162,8 +163,9 @@ for (let i=0;i<operator.length;i++){
             }
             coun = coun + 1;  
         }
-        
-        var ttt = op.substring(op.length - coun+1, op.length);
+        console.log("Length:", op.length);
+        console.log("Coun", coun);
+        var ttt = op.substring(coun+1);
         console.log(ttt);
         var kk =  parseInt(ttt);
         var mm = kk/100;
@@ -174,8 +176,6 @@ for (let i=0;i<operator.length;i++){
         setHelper(eval(op));
         setValue_onscreen("");
         setHistory_onscreen("");
-        
-        
         
     }
 
