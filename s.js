@@ -146,33 +146,35 @@ function solve(){
     var a;
     a = $("#temp").text();
     b = lastInput;
-
-    if(lastOperator=="sum" || lastOperator=="+"){
-        result = sum(a,b);
-    }
-    if(lastOperator=="subs"|| lastOperator=="-"){
-        result = subs(a,b);
-    }
-    if(lastOperator=="multiply"|| lastOperator=="*"){
-        result = multiply(a,b);
-    }
-    if(lastOperator=="divide"|| lastOperator=="/"){
-        result = divide(a,b);
-    }
-    if(lastOperator == "sqroot"){
-        sqroot();
-        nextOperator = "";
-        return;
-    }
-    if( lastOperator == "square"){
-        square(a);
-        nextOperator = "";
-        return;
-    }
-    if( lastOperator == "inverse"){
-        inverse(a);
-        nextOperator = "";
-        return;
+    
+    if(lastInput !=0){
+        if(lastOperator=="sum" || lastOperator=="+"){
+            result = sum(a,b);
+        }
+        if(lastOperator=="subs"|| lastOperator=="-"){
+            result = subs(a,b);
+        }
+        if(lastOperator=="multiply"|| lastOperator=="*"){
+            result = multiply(a,b);
+        }
+        if(lastOperator=="divide"|| lastOperator=="/"){
+            result = divide(a,b);
+        }
+        if(lastOperator == "sqroot"){
+            sqroot();
+            nextOperator = "";
+            return;
+        }
+        if( lastOperator == "square"){
+            square(a);
+            nextOperator = "";
+            return;
+        }
+        if( lastOperator == "inverse"){
+            inverse(a);
+            nextOperator = "";
+            return;
+        }
     }
     
     lastInput = $("#temp").text();
@@ -233,7 +235,7 @@ $(".operator").click(function () {
         lastInput = 1;
        }
       if(lastOperator == "subs" || lastOperator == "sum"){
-        lastInput = "";
+        lastInput = 0;
       }
       if(lastOperator == "divide"){
         lastInput = ($("#temp").text());
