@@ -64,11 +64,11 @@ function nextOperatorOperation(op){
 
 function sqroot(a) {
     
-    if(a % 1 != 0){
+    if(a % 1 != 0 || a>9999999){
         return Math.sqrt(Number(a)).toFixed(5);
     }
     else{
-        return Math.sqrt(Number(a), 2);
+        return Math.sqrt(Number(a)).toFixed(5);
     }
 }
 
@@ -245,6 +245,6 @@ $(".operator").click(function () {
 //         nextOperatorOperation(e.key);
 //     }
 
-// }}
+// }
 
 
