@@ -127,10 +127,17 @@ function multiply(a,b){
 
 
 function divide(a,b){
-    if((Number(b)/Number(a)) > 999999999){
+    if((Number(b)/Number(a)) > 999999999 || (Number(b)/Number(a))%1 != 0){
         return (Number(b)/Number(a)).toExponential(3);
         }
-    return (Number(b)/Number(a));
+    else if(a % 1 != 0 ){
+    
+        return (Number(b)/Number(a)).toFixed(5);
+    
+    }
+    else{
+        return (Number(b)/Number(a));
+    }
 }
 
 
