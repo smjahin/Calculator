@@ -229,7 +229,7 @@ $(".operator").click(function () {
     let op = this.id;
     if(op == "solve"){
         solve();
-        lastInput = 0;
+        lastInput = 1;
         return;
     }
     nextOperatorOperation(op);
