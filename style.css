@@ -53,6 +53,20 @@ body{
     background-color: #c7c6c6;
     box-shadow: -20px 20px 43px #a9a9a9, -2px 3px 20px 0px #bfbbbb;
 }
+.other{
+    font-size: 18px;
+    font-weight: 100;
+    width: 80px;
+    height: 50px;
+    margin: 0px;
+    padding: 0;
+    border: none;
+    float: left;
+    font-family: Segoe UI;
+    color: rgb(12, 11, 11);
+    background-color: #c7c6c6;
+    box-shadow: -20px 20px 43px #a9a9a9, -2px 3px 20px 0px #bfbbbb;
+}
 .number{
     font-size: 22px;
     font-weight: 600; 
@@ -68,11 +82,11 @@ body{
     
 }
 
-.number, .empty{
+.number, .empty,.other{
     background-color: #f0f0f0fa;
 }
 
-.number, .operator{
+.number, .operator,.other{
     cursor: pointer;
     margin: 1px;
 }
@@ -90,6 +104,14 @@ body{
 }
 
 .operator:active {
+    background: #555353;
+}
+
+.other:hover {
+    background: #a0a0a0;
+}
+
+.other:active {
     background: #555353;
 }
 
