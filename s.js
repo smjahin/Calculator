@@ -86,7 +86,7 @@ function square(a) {
 }
 
 function inverse(a) {
-    return 1 / Number(a).toFixed(5);
+    return (1 / Number(a)).toExponential(3);
 }
 
 function percent(a){
