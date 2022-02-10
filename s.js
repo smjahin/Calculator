@@ -229,7 +229,15 @@ $(".operator").click(function () {
     let op = this.id;
     if(op == "solve"){
         solve();
+      if(lastOperator == "multiply"){
         lastInput = 1;
+       }
+      if(lastOperator == "subs" || lastOperator == "sum"){
+        lastInput = "";
+      }
+      if(lastOperator == "divide"){
+        lastInput = ($("#temp").text());
+      }
         return;
     }
     nextOperatorOperation(op);
