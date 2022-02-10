@@ -9,14 +9,13 @@ body{
 
 #calculator{
 	width: 328px;
-    height: 431px;
+    height: 405px;
 	background: #e0e0e0;
     box-shadow:  -20px 20px 60px #bebebe,
-    20px -20px 60px #ffffff;
-    
+    20px -20px 60px #ffffff; 
     margin: 0 auto;
     padding: 3px;
-    top: 20px;
+    top: 100px;
     position: relative;
     background: rgba( 255, 255, 255, 0.1 );
 
@@ -28,20 +27,11 @@ body{
     box-shadow: inset -20px 20px 43px #d0d0d0, inset 20px -20px 43px #e3e1e1;
 }
 
-#history{
-    /* text-align: right;
-    height: 20px;
-    margin: 0 20px;
-    padding-top: 20px;
-    font-size: 15px;
-    color: #e78f8f; */
-    font-size: 2px;
-}
 #output{
     text-align: right;
     height: 60px;
-    margin: 10px 20px;
-    font-size: 30px;
+    margin: 21px 10px;
+    font-size: 25px;
 }
 
 #keyboard{
@@ -116,11 +106,3 @@ button:nth-child(24){
 }
 
 
-#helper{
-    text-align: right;
-    height: 20px;
-    margin: 0 20px;
-    padding-top: 20px;
-    font-size: 15px;
-    color: #e78f8f;
-}
