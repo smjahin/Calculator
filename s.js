@@ -3,6 +3,7 @@ var nextOperator = "";
 var result = 0; 
 var reset = false;
 var lastInput = ""; 
+var equal = 0;
 
 function type(n){
 
@@ -107,6 +108,7 @@ function subs(a,b){
     }
     return (Number(b)-Number(a));
 }
+
 function multiply(a,b){
 
     if((Number(b)*Number(a)) > 999999999){
@@ -122,6 +124,8 @@ function multiply(a,b){
         return (Number(b)*Number(a));
     }
 }
+
+
 function divide(a,b){
     if((Number(b)/Number(a)) > 999999999){
         return (Number(b)/Number(a)).toExponential(3);
@@ -129,21 +133,23 @@ function divide(a,b){
     return (Number(b)/Number(a));
 }
 
+
+
 function solve(){
     var a;
     a = $("#temp").text();
     b = lastInput;
 
-    if(lastOperator=="sum"){
+    if(lastOperator=="sum" || lastOperator=="+"){
         result = sum(a,b);
     }
-    if(lastOperator=="subs"){
+    if(lastOperator=="subs"|| lastOperator=="-"){
         result = subs(a,b);
     }
-    if(lastOperator=="multiply"){
+    if(lastOperator=="multiply"|| lastOperator=="*"){
         result = multiply(a,b);
     }
-    if(lastOperator=="divide"){
+    if(lastOperator=="divide"|| lastOperator=="/"){
         result = divide(a,b);
     }
     if(lastOperator == "sqroot"){
@@ -161,7 +167,7 @@ function solve(){
         nextOperator = "";
         return;
     }
-
+    
     lastInput = $("#temp").text();
     $("#temp").text(result);
     nextOperator = "";
@@ -187,7 +193,12 @@ function backspace() {
     foo = foo.split("");
     foo.pop();
     foo = foo.join("");
-    foo = foo == "" ? "0" : foo;
+    if (foo == ""){
+        foo = "";
+    }
+    else{
+        foo = foo;
+    }
 
     $("#temp").text(foo);
 }
@@ -206,12 +217,34 @@ $(".number").click(function () {
 });
 
 //operator
-
+var count = 0;
 $(".operator").click(function () {
     let op = this.id;
     if(op == "solve"){
         solve();
+        lastInput = 0;
         return;
     }
     nextOperatorOperation(op);
 });
+
+
+// document.addEventListener('keydown', logKey)
+// function logKey(e)
+// {
+//     if(e.key == "0" ||e.key == "1" ||e.key == "2" ||e.key == "3" ||e.key == "4" ||e.key == "5" ||e.key == "6" ||e.key == "7" ||e.key == "8" ||e.key == "9"){
+//         type(e.key);
+//         nextOperator = "";  
+//     }
+
+//     else if(e.key=="+" || e.key=="-"||e.key=="*"||e.key=="/"||e.key=="="){
+//         if (e.key == "="){
+//             solve();
+//             return;
+//         }
+//         nextOperatorOperation(e.key);
+//     }
+
+// }
+
+
