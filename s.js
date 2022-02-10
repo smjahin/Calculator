@@ -245,6 +245,6 @@ $(".operator").click(function () {
 //         nextOperatorOperation(e.key);
 //     }
 
-// }
+// }}
 
 
