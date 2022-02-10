@@ -21,8 +21,9 @@ function type(n){
         last = next;
         next = "";
     }
-
-    $("#temp").text($("#temp").text()+n);
+    if($("#temp").text().length < 10){
+        $("#temp").text($("#temp").text()+n);
+    }
 }
 
 function nextOperation(op){
@@ -65,7 +66,11 @@ function sqroot(a) {
 }
 
 function square(a) {
-    return Math.pow(Number(a), 2);
+    if(Math.pow(Number(a), 2).toFixed(8)>999999999){
+        return Math.pow(Number(a), 2).toExponential(3);
+    }
+
+    return Math.pow(Number(a), 2).toFixed(8);
 }
 
 function inverse(a) {
@@ -77,17 +82,31 @@ function percent(a){
 }
 
 function sum(a,b){
-    return Number(a)+Number(b);
+    if((Number(a)+Number(b)) > 999999999){
+        return (Number(a)+Number(b)).toExponential(3);
+        }
+    return (Number(a)+Number(b));
 }
 
 function subs(a,b){
-    return Number(b)-Number(a);
+    if((Number(b)-Number(a)) > 999999999){
+        return (Number(b)-Number(a)).toExponential(3);
+        }
+    return (Number(b)-Number(a));
 }
 function multiply(a,b){
-    return (Number(b)*Number(a));
+    if((Number(b)*Number(a)) > 999999999){
+    return (Number(b)*Number(a)).toExponential(3);
+    }
+    else{
+        return (Number(b)*Number(a));
+    }
 }
 function divide(a,b){
-    return Number(b)/Number(a);
+    if((Number(b)/Number(a)) > 999999999){
+        return (Number(b)/Number(a)).toExponential(3);
+        }
+    return (Number(b)/Number(a));
 }
 
 function solve(){
